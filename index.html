@@ -153,6 +153,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .btn{padding:7px 16px;border-radius:var(--r);border:1px solid var(--border);font-size:13px;cursor:pointer;font-family:var(--sans);transition:all .15s}
 .btn-ghost{background:transparent;color:var(--text2)}.btn-ghost:hover{border-color:var(--border2);color:var(--text)}
 .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn-primary:hover{opacity:.85}
+.cat-filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r)}
+.cat-filter-bar-label{font-size:10px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;margin-right:4px;white-space:nowrap}
+.cat-chip-filter{font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid transparent;background:transparent;color:var(--text3);cursor:pointer;font-family:var(--mono);transition:all .15s;display:flex;align-items:center;gap:5px}
+.cat-chip-filter:hover{background:rgba(255,255,255,0.05)}
+.cat-chip-filter.on{color:#fff}
+.cat-chip-filter-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.cat-chip-clear{font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer;font-family:var(--mono);transition:all .15s;margin-left:auto;white-space:nowrap}
+.cat-chip-clear:hover{border-color:var(--red);color:var(--red)}
 .empty{padding:40px;text-align:center;color:var(--text3);font-size:13px}
 .empty-icon{font-size:28px;margin-bottom:10px}
 .toast{position:fixed;bottom:20px;right:20px;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:9px 14px;font-size:12px;color:var(--text2);transform:translateY(60px);opacity:0;transition:all .3s;z-index:200;pointer-events:none}
@@ -227,7 +235,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
       </div>
     </div>
   </div>
-  <div class="task-scroll" id="task-panel"><div id="task-list"></div></div>
+  <div class="task-scroll" id="task-panel">
+    <div class="cat-filter-bar" id="cat-filter-bar">
+      <span class="cat-filter-bar-label">🏷 Categoria:</span>
+      <div id="cat-filter-chips" style="display:flex;gap:6px;flex-wrap:wrap;flex:1;align-items:center"></div>
+      <button class="cat-chip-clear" id="cat-clear-btn" onclick="clearCatFilter()" style="display:none">✕ Limpar filtro</button>
+    </div>
+    <div id="task-list"></div>
+  </div>
   <div class="task-scroll" id="report-panel" style="display:none">
     <div class="report-header">
       <div class="report-title">Relatório por categoria</div>
@@ -510,6 +525,7 @@ function render(){
   });
   if(!any)html='<div class="empty"><div class="empty-icon">📭</div>Nenhum e-mail para este filtro</div>';
   document.getElementById('task-list').innerHTML=html;
+  renderCatFilterBar();
 }
 function toggleSec(n){secOpen[n]=!secOpen[n];render()}
 
@@ -560,6 +576,43 @@ function updateSidebar(){
 function updateCatNav(){
   document.getElementById('cat-nav').innerHTML=cats.map(c=>{const cnt=tasks.filter(t=>(t.cats||[]).includes(c.id)).length;return`<button class="cat-nav-item${catFilter===c.id?' active':''}" onclick="setCatFilter('${c.id}',this)" style="${catFilter===c.id?`border-left-color:${c.color}`:''}"><span class="cat-dot" style="background:${c.color}"></span><span style="${catFilter===c.id?`color:${c.color}`:''}">${c.name}</span><span class="cat-nav-count">${cnt}</span></button>`}).join('');
 }
+function renderCatFilterBar(){
+  const chips = document.getElementById('cat-filter-chips');
+  const clearBtn = document.getElementById('cat-clear-btn');
+  chips.innerHTML = cats.map(c => {
+    const cnt = tasks.filter(t => (t.cats||[]).includes(c.id)).length;
+    if(!cnt) return '';
+    const isOn = catFilter === c.id;
+    return `<button class="cat-chip-filter ${isOn?'on':''}"
+      style="${isOn?`background:${c.color};border-color:${c.color}`:`border-color:${c.color}44`}"
+      onclick="setCatFilterBar('${c.id}')">
+      <span class="cat-chip-filter-dot" style="background:${c.color}"></span>
+      ${c.name} <span style="font-size:10px;opacity:.7">${cnt}</span>
+    </button>`;
+  }).join('');
+  clearBtn.style.display = catFilter ? '' : 'none';
+}
+
+function setCatFilterBar(cid){
+  if(catFilter === cid){ clearCatFilter(); return; }
+  catFilter = cid; viewFilter='all'; dayFilter=null;
+  const c = getCat(cid);
+  document.getElementById('view-title').textContent = c ? c.name : cid;
+  document.querySelectorAll('.nav-btn,.cat-nav-item').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.day-item').forEach(el=>el.classList.remove('active'));
+  showTab('tasks');
+  renderCatFilterBar();
+  render();
+}
+
+function clearCatFilter(){
+  catFilter = null;
+  document.getElementById('view-title').textContent = 'Todos';
+  document.querySelectorAll('.nav-btn').forEach((b,i)=>{ if(i===0) b.classList.add('active'); else b.classList.remove('active'); });
+  renderCatFilterBar();
+  render();
+}
+
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500)}
 
 document.getElementById('view-date').textContent=new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
