@@ -15,18 +15,13 @@
   --amber:#e8a84a;--amber-dim:rgba(232,168,74,0.11);
   --green:#4caf7d;--green-dim:rgba(76,175,125,0.11);
   --blue:#4a9de8;--blue-dim:rgba(74,157,232,0.11);
-  --purple:#a06af7;--purple-dim:rgba(160,106,247,0.11);
-  --teal:#4acfb8;--teal-dim:rgba(74,207,184,0.11);
-  --coral:#e87a4a;--coral-dim:rgba(232,122,74,0.11);
-  --pink:#e84aab;--pink-dim:rgba(232,74,171,0.11);
   --mono:'IBM Plex Mono',monospace;--sans:'DM Sans',sans-serif;--r:8px
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;font-size:14px}
 .app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
-
-/* Sidebar */
 .sidebar{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.main{display:flex;flex-direction:column;min-height:100vh;overflow:hidden}
 .logo{padding:18px 16px 14px;border-bottom:1px solid var(--border)}
 .logo-title{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.5px}
 .logo-sub{font-size:11px;color:var(--text3);margin-top:3px;font-family:var(--mono)}
@@ -39,15 +34,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .nav-count{margin-left:auto;font-family:var(--mono);font-size:10px;background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:99px}
 .sidebar-divider{border:none;border-top:1px solid var(--border);margin:6px 0}
-
-/* Category nav items */
 .cat-nav-item{display:flex;align-items:center;gap:8px;padding:6px 16px;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;font-family:var(--sans);font-size:12px;color:var(--text2);transition:all .15s;position:relative}
 .cat-nav-item:hover{background:rgba(255,255,255,0.03);color:var(--text)}
-.cat-nav-item.active{color:var(--text)}
-.cat-nav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px}
 .cat-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 .cat-nav-count{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--text3)}
-
 .day-section{padding:10px 16px 12px;border-top:1px solid var(--border)}
 .day-label{font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;font-family:var(--mono);margin-bottom:7px}
 .day-item{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;border-radius:6px;cursor:pointer;margin-bottom:3px;transition:all .15s;border:1px solid transparent}
@@ -56,30 +46,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .day-item-label{font-size:12px;color:var(--text2)}
 .day-item.active .day-item-label{color:var(--accent)}
 .day-item-cnt{font-family:var(--mono);font-size:10px;color:var(--text3)}
-
-/* Main */
-.main{display:flex;flex-direction:column;min-height:100vh;overflow:hidden}
 .main-top{padding:22px 28px 0;flex-shrink:0}
 .main-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
 .main-title{font-size:18px;font-weight:500}
 .main-sub{font-family:var(--mono);font-size:11px;color:var(--text3);margin-top:3px}
 .header-actions{display:flex;gap:8px;align-items:center}
-
-/* Tabs */
 .tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:18px}
 .tab{padding:7px 14px;font-size:12px;color:var(--text3);cursor:pointer;border:none;background:transparent;font-family:var(--sans);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
 .tab:hover{color:var(--text2)}
 .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
-
-/* Stats */
 .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px}
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:11px 13px}
 .stat-n{font-family:var(--mono);font-size:20px;font-weight:500}
 .stat-l{font-size:10px;color:var(--text3);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
 .prog-bar{height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;margin-bottom:16px}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-
-/* Toolbar */
 .toolbar{display:flex;align-items:center;gap:6px;margin-bottom:14px;flex-wrap:wrap}
 .chip{font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;font-family:var(--sans);transition:all .15s}
 .chip:hover{border-color:var(--border2);color:var(--text2)}
@@ -88,8 +69,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .search-inp{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:6px 12px 6px 28px;font-size:12px;color:var(--text);font-family:var(--sans);width:180px;outline:none;transition:border-color .15s}
 .search-inp:focus{border-color:var(--border2)}
 .search-icon{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:11px;pointer-events:none}
-
-/* Task list */
 .task-scroll{flex:1;overflow-y:auto;padding:0 28px 28px}
 .sec-wrap{margin-bottom:6px}
 .sec-head{display:flex;align-items:center;gap:7px;padding:8px 0 6px;cursor:pointer;border-bottom:1px solid var(--border);margin-bottom:7px}
@@ -99,34 +78,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .sec-arr{margin-left:auto;font-size:11px;color:var(--text3);transition:transform .2s}
 .sec-arr.closed{transform:rotate(-90deg)}
 .cards{display:flex;flex-direction:column;gap:5px}
-
-/* Card */
-.card{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:var(--r);border:1px solid var(--border);background:var(--surface);transition:border-color .15s,opacity .15s;position:relative;cursor:default}
+.card{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:var(--r);border:1px solid var(--border);background:var(--surface);transition:border-color .15s;position:relative;cursor:default}
 .card:hover{border-color:var(--border2)}
 .card.done{opacity:.35}
 .card.waiting-me{border-left:2px solid var(--red)}
 .card.waiting-them{border-left:2px solid var(--blue)}
 .card.replied{border-left:2px solid var(--green)}
-
-/* Checkbox */
 .cb{width:15px;height:15px;border-radius:4px;border:1.5px solid var(--border2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all .15s}
 .cb:hover{border-color:var(--accent)}
-.cb.s-done{background:var(--green);border-color:var(--green)}
-.cb.s-replied{background:var(--green);border-color:var(--green)}
+.cb.s-done,.cb.s-replied{background:var(--green);border-color:var(--green)}
 .cb.s-waiting-them{background:var(--blue-dim);border-color:var(--blue)}
 .cb.s-done::after,.cb.s-replied::after{content:'✓';font-size:9px;color:#fff;font-weight:700}
-
 .pri{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .p-high{background:var(--red)}.p-med{background:var(--amber)}.p-low{background:var(--green)}
-
 .card-body{flex:1;min-width:0}
 .card-subj{font-size:13px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
 .card.done .card-subj{text-decoration:line-through;color:var(--text3)}
 .card-meta{font-size:11px;color:var(--text3);font-family:var(--mono);margin-bottom:4px}
 .card-prev{font-size:12px;color:var(--text2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card-reply{margin-top:5px;padding:5px 9px;background:rgba(76,175,125,0.07);border-left:2px solid var(--green);border-radius:0 4px 4px 0;font-size:11px;color:var(--text2);font-style:italic}
-
-/* Tags area */
 .card-footer{display:flex;align-items:center;gap:4px;margin-top:7px;flex-wrap:wrap}
 .badge{font-size:10px;border-radius:4px;padding:2px 7px;font-family:var(--mono);font-weight:500}
 .badge-wm{background:var(--red-dim);color:var(--red)}
@@ -134,27 +104,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .badge-rep{background:var(--green-dim);color:var(--green)}
 .badge-done{background:rgba(255,255,255,0.04);color:var(--text3)}
 .badge-gray{background:rgba(255,255,255,0.05);color:var(--text3)}
-
-/* Category chips on card */
 .cat-chip{font-size:10px;border-radius:3px;padding:2px 6px;font-family:var(--mono);cursor:pointer;transition:opacity .15s}
 .cat-chip:hover{opacity:.75}
-
 .open-link{font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--text3);text-decoration:none;font-family:var(--mono);transition:all .15s;display:inline-flex;align-items:center;gap:3px}
 .open-link:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
-
 .card-acts{display:flex;gap:4px;margin-left:auto;opacity:0;transition:opacity .15s;flex-shrink:0}
 .card:hover .card-acts{opacity:1}
 .icon-btn{width:23px;height:23px;border-radius:5px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .15s}
 .icon-btn:hover{border-color:var(--border2);color:var(--text)}
 .icon-btn.del:hover{border-color:var(--red);color:var(--red);background:var(--red-dim)}
-
-/* Buttons */
 .btn-add{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:var(--r);border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-size:12px;font-family:var(--sans);transition:all .15s}
 .btn-add:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
 .btn-export{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:var(--r);border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;font-size:12px;font-family:var(--sans);transition:all .15s}
 .btn-export:hover{border-color:var(--border2);color:var(--text2)}
-
-/* Report panel */
 .report-panel{padding:0 28px 28px}
 .report-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .report-title{font-size:14px;font-weight:500}
@@ -170,11 +132,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .rc-footer{display:flex;gap:6px;margin-top:10px}
 .rc-btn{font-size:11px;padding:4px 10px;border-radius:5px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;font-family:var(--mono);transition:all .15s}
 .rc-btn:hover{border-color:var(--border2);color:var(--text2)}
-
-/* Month filter */
 .month-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-
-/* Modal */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
 .overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:20px;width:520px;max-width:95vw;transform:translateY(10px);transition:transform .2s;max-height:90vh;overflow-y:auto}
@@ -187,37 +145,28 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .field textarea{resize:vertical;min-height:60px}
 .field select option{background:var(--surface2)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
-/* Category selector */
 .cat-selector{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .cat-toggle{font-size:11px;padding:4px 10px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;font-family:var(--mono);transition:all .15s}
 .cat-toggle:hover{border-color:var(--border2)}
 .cat-toggle.sel{color:#fff}
-
 .modal-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
 .btn{padding:7px 16px;border-radius:var(--r);border:1px solid var(--border);font-size:13px;cursor:pointer;font-family:var(--sans);transition:all .15s}
 .btn-ghost{background:transparent;color:var(--text2)}.btn-ghost:hover{border-color:var(--border2);color:var(--text)}
 .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn-primary:hover{opacity:.85}
-
 .empty{padding:40px;text-align:center;color:var(--text3);font-size:13px}
 .empty-icon{font-size:28px;margin-bottom:10px}
-
 .toast{position:fixed;bottom:20px;right:20px;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:9px 14px;font-size:12px;color:var(--text2);transform:translateY(60px);opacity:0;transition:all .3s;z-index:200;pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1}
-
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:2px}
 </style>
 </head>
 <body>
 <div class="app">
-
-<!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="logo">
     <div class="logo-title">✉ MAIL TASKS</div>
-    <div class="logo-sub">BFFC · TI</div>
+    <div class="logo-sub">BFFC · TI · 05/05/2026</div>
   </div>
-
   <div class="nav-section">
     <div class="nav-label">Status</div>
     <button class="nav-btn active" onclick="setView('all',this)"><span class="nav-dot" style="background:var(--accent)"></span>Todos<span class="nav-count" id="cnt-all">0</span></button>
@@ -226,23 +175,18 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
     <button class="nav-btn" onclick="setView('replied',this)"><span class="nav-dot" style="background:var(--green)"></span>Respondidos<span class="nav-count" id="cnt-rep">0</span></button>
     <button class="nav-btn" onclick="setView('high',this)"><span class="nav-dot" style="background:var(--red)"></span>Alta prioridade<span class="nav-count" id="cnt-high">0</span></button>
   </div>
-
   <hr class="sidebar-divider">
-
   <div class="nav-section">
     <div class="nav-label">Categorias</div>
     <div id="cat-nav"></div>
   </div>
-
   <hr class="sidebar-divider">
-
   <div class="day-section">
     <div class="day-label">Por dia</div>
     <div id="day-list"></div>
   </div>
 </aside>
 
-<!-- MAIN -->
 <div class="main">
   <div class="main-top">
     <div class="main-header">
@@ -255,12 +199,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
         <button class="btn-add" onclick="openModal()">＋ Adicionar</button>
       </div>
     </div>
-
     <div class="tabs">
       <div class="tab active" onclick="showTab('tasks',this)">Tarefas</div>
       <div class="tab" onclick="showTab('report',this)">Relatório por categoria</div>
     </div>
-
     <div id="stats-area">
       <div class="stats">
         <div class="stat"><div class="stat-n" id="s-total" style="color:var(--accent)">0</div><div class="stat-l">Total</div></div>
@@ -282,13 +224,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
       </div>
     </div>
   </div>
-
-  <!-- Task list -->
-  <div class="task-scroll" id="task-panel">
-    <div id="task-list"></div>
-  </div>
-
-  <!-- Report panel -->
+  <div class="task-scroll" id="task-panel"><div id="task-list"></div></div>
   <div class="task-scroll" id="report-panel" style="display:none">
     <div class="report-header">
       <div class="report-title">Relatório por categoria</div>
@@ -300,7 +236,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 </div>
 </div>
 
-<!-- MODAL -->
 <div class="overlay" id="modal" onclick="closeModalOut(event)">
   <div class="modal">
     <div class="modal-title" id="modal-title">Adicionar e-mail</div>
@@ -335,10 +270,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
       </div>
     </div>
     <div class="field">
-      <label>Categorias (selecione uma ou mais)</label>
+      <label>Categorias</label>
       <div class="cat-selector" id="cat-selector"></div>
     </div>
-    <div class="field"><label>Nova categoria (opcional)</label>
+    <div class="field"><label>Nova categoria</label>
       <div style="display:flex;gap:8px">
         <input id="f-newcat" placeholder="Ex: Compras de TI, Projetos 2026..." style="flex:1">
         <button class="btn btn-ghost" style="white-space:nowrap" onclick="addNewCat()">＋ Criar</button>
@@ -351,16 +286,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-const KEY = 'bffc_mt_v3';
-const DEPTS = ['Conectividade / Fornecedores','Financeiro / Fiscal','Sistemas / Integrações','Equipamentos / Hardware','RH / TI Interno','Outros'];
-const DEPT_ICONS = {'Conectividade / Fornecedores':'📡','Financeiro / Fiscal':'💰','Sistemas / Integrações':'⚙️','Equipamentos / Hardware':'🖥️','RH / TI Interno':'👥','Outros':'📌'};
-
-// Categorias semânticas com cores
-const DEFAULT_CATS = [
+const KEY='bffc_mt_v3';
+const DEPTS=['Conectividade / Fornecedores','Financeiro / Fiscal','Sistemas / Integrações','Equipamentos / Hardware','RH / TI Interno','Outros'];
+const DEPT_ICONS={'Conectividade / Fornecedores':'📡','Financeiro / Fiscal':'💰','Sistemas / Integrações':'⚙️','Equipamentos / Hardware':'🖥️','RH / TI Interno':'👥','Outros':'📌'};
+const DEFAULT_CATS=[
   {id:'c1',name:'Compras de TI',color:'#7c6af7'},
   {id:'c2',name:'Orçamentos',color:'#e8a84a'},
   {id:'c3',name:'Projetos',color:'#4a9de8'},
@@ -371,503 +303,264 @@ const DEFAULT_CATS = [
   {id:'c8',name:'RH / Acessos',color:'#a06af7'},
   {id:'c9',name:'CAPEX',color:'#e05252'},
   {id:'c10',name:'Fornecedores',color:'#888'},
+  {id:'c11',name:'Reforma Tributária',color:'#4a9de8'},
 ];
 
-let tasks = [], cats = [], editId = null;
-let viewFilter = 'all', priFilter = 'all', dayFilter = null, catFilter = null;
-let secOpen = {};
-DEPTS.forEach(d => secOpen[d] = true);
-
-// Seed data — cruzamento 05/05/2026
-const SEED_TASKS = [
-  {id:'s1',subj:'OS LINX 780421 — Bob\'s Paralela Shopping BA',from:'alecsandra.oliveira@linx.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Conectividade / Fornecedores',cats:['c6','c3'],prev:'Embratel confirma infraestrutura existente. Aguarda decisão: autorizar instalação?',reply:'',link:''},
-  {id:'s2',subj:'Visita Simpress — agendar reunião',from:'lmaandrade@simpress.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Conectividade / Fornecedores',cats:['c2','c10'],prev:'Pauta: feedback operação, forecast lojas e renovação contratual.',reply:'',link:''},
+// SEED COMPLETO — 05/05/2026 (inclui novos e-mails do Marcos Mattos e outros)
+const SEED_TASKS=[
+  // AGUARDA MINHA RESPOSTA
+  {id:'s1',subj:'OS LINX 780421 — Bob\'s Paralela Shopping BA',from:'alecsandra.oliveira@linx.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Conectividade / Fornecedores',cats:['c6','c3'],prev:'Embratel confirma infraestrutura existente. Aguarda decisão: autorizar instalação?',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yuyAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s2',subj:'Visita Simpress — agendar reunião',from:'lmaandrade@simpress.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Conectividade / Fornecedores',cats:['c2','c10'],prev:'Pauta: feedback operação, forecast lojas e renovação contratual.',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yuvAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
   {id:'s3',subj:'Governança Linx — Ref 04.2026',from:'emily.ceron@linx.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Conectividade / Fornecedores',cats:['c10'],prev:'Indicadores março/abril enviados com anexo.',reply:'',link:''},
-  {id:'s4',subj:'Conciliação PIX — GCOM',from:'fabricio.bustamante@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Questiona processo GCOM para vendas sem integração retaguarda.',reply:'',link:''},
-  {id:'s5',subj:'Verificação de faturamento — admti',from:'admti@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Divergências em NFs/faturas do mês.',reply:'',link:''},
-  {id:'s6',subj:'SPED Bob\'s Nordeste — Faturamento Abril 2026',from:'luanette.bento@grupomultipla.com.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Múltipla pergunta sobre integração contábil.',reply:'Boa tarde, estamos verificando.',link:''},
-  {id:'s7',subj:'Central XML — Notas Faltantes',from:'kaue.moreira@bffc.com.br',date:'2026-05-05',status:'waiting-them',pri:'med',dept:'Financeiro / Fiscal',cats:['c7','c5'],prev:'Problema voltou. Kaué acionou Central XML.',reply:'',link:''},
-  {id:'s8',subj:'Vendas Brutas BFFC — Abril 2026',from:'moises.sousa@adccont.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Relatório de vendas ref. 04/2026 enviado com anexo.',reply:'',link:''},
-  {id:'s9',subj:'Integração Onfly x BFFC Protheus',from:'ellano.carvalho@onfly.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Sistemas / Integrações',cats:['c3','c5'],prev:'Precisa alinhar quais das 9 empresas conduzirão o fluxo.',reply:'',link:''},
-  {id:'s10',subj:'SeSuite x Infraspeak — orçamento pendente',from:'fabricio.falco@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Sistemas / Integrações',cats:['c2','c3'],prev:'Fabrício cobrando orçamento da Techub. Solicitado desde 28/04.',reply:'',link:''},
-  {id:'s11',subj:'Techub Digital x BFFC — pendências',from:'daniela.nogueira@techub.com.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Sistemas / Integrações',cats:['c3','c10'],prev:'Daniela confirmando entregas. Você aguarda retorno.',reply:'ok, fico no aguardo.',link:''},
-  {id:'s12',subj:'Chamados GCOM — reunião 12/05 e 26/05',from:'jacques.araujo@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Sistemas / Integrações',cats:['c5'],prev:'Jacques sugere 12 e 26/mai às 10h. Aguarda confirmação.',reply:'',link:''},
-  {id:'s13',subj:'Chamado LINX 2026.REC007.03427 — NFCOM',from:'rossane.lemos@acene.recife.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Sistemas / Integrações',cats:['c5','c7'],prev:'NFCOM deve ir no REC006. Você acionou ADM TI para corrigir.',reply:'@ADM TI por gentileza, poderia corrigir.',link:''},
-  {id:'s14',subj:'Chamados UAF — Abril 2026 (Evolluz)',from:'beatriz.campezzi@bffc.com.br',date:'2026-05-05',status:'replied',pri:'med',dept:'Sistemas / Integrações',cats:['c5'],prev:'Valores altos. Você questionou absorção interna.',reply:'Os valores estão ficando altos e não orçei isso. Conseguimos absorver internamente?',link:''},
-  {id:'s15',subj:'Videosoft — Pedido nº 14710 QQ Grande Rio III',from:'jeane.tavares@videosoft.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Fatura enviada. Verificar boleto e lançamento.',reply:'',link:''},
-  {id:'s16',subj:'WOW Tec — Orçamento terminal CI 135496',from:'patrick.teixeira@wow.tec.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Orçamento de reparo enviado. Aguardando aprovação.',reply:'',link:''},
-  {id:'s17',subj:'Cotação celular — Galaxy A37 vs A36',from:'luciano.lopes@fsrental.com.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'FSRental enviou A37. Você questionou A36 a R$ 96/mês com seguro.',reply:'Estamos com proposta de R$ 96 com seguro para o A36. Me avise se conseguem acompanhar.',link:''},
-  {id:'s18',subj:'Impressora locação Bob\'s — instalação',from:'renato.conceicao@bffc.com.br',date:'2026-05-05',status:'waiting-them',pri:'med',dept:'Equipamentos / Hardware',cats:['c1','c5'],prev:'Você pediu passo a passo para Carolina (Simpress).',reply:'@Carolina Renato está de férias. Pode me passar o passo a passo?',link:''},
-  {id:'s19',subj:'Laudo técnico TV Samsung — Bob\'s Recife',from:'pedro@mcsolucoesemtecnologia.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Você perguntou sobre o tamanho da tela.',reply:'Se comprarmos outra TV pode haver diferenças. Qual é o tamanho da tela?',link:''},
-  {id:'s20',subj:'Orçamento chamador de senhas — Bob\'s Recife',from:'Tassio@mcsolucoesemtecnologia.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Solicitou cotação dos demais equipamentos, monitor 32".',reply:'Pode enviar a cotação? O monitor precisa ser de 32 polegadas.',link:''},
-  {id:'s21',subj:'TV Menu / KFC Norte Shopping — CAPEX aprovado',from:'hugo@otechinfo.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Equipamentos / Hardware',cats:['c1','c9'],prev:'Pedido nº 186876 autorizado. Classificado como CAPEX.',reply:'Pode seguir. @ADM TI classificar como CAPEX.',link:''},
-  {id:'s22',subj:'Novo colaborador — Diana Cristina da Silva',from:'glayciane.silva@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'RH / TI Interno',cats:['c8'],prev:'Provisionar ferramentas e acessos.',reply:'',link:''},
-  {id:'s23',subj:'Alinhamento Cadastro — contato Adccont',from:'admti@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'RH / TI Interno',cats:['c8'],prev:'ADM TI perguntando se há mais contatos na Adccont.',reply:'',link:''},
-  {id:'s24',subj:'Troca de aparelho — Aline Corrêa',from:'aline.correa@bffc.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'RH / TI Interno',cats:['c8','c1'],prev:'Aguarda assinatura contrato. Prazo ~20 dias.',reply:'Aguardando assinatura do contrato. Prazo ~20 dias.',link:''},
-  {id:'s25',subj:'OS LINX 780369 — cancelamento QSQ Salvador',from:'gestaooperadoras@linx.com.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Conectividade / Fornecedores',cats:['c6','c4'],prev:'Você pediu cancelamento para Camila e verificação de multa.',reply:'Camila, poderia seguir com o cancelamento e verificar se há multa?',link:''},
-  {id:'s26',subj:'3S — Ajuste CEST / saída do Igor',from:'kaue.moreira@bffc.com.br',date:'2026-05-05',status:'replied',pri:'med',dept:'Sistemas / Integrações',cats:['c5','c3'],prev:'Comunicou saída do Igor. Solicitou avanço no chamado KFCF-12542.',reply:'Comunico a saída do Igor. Elvis, consegue avançar com o chamado?',link:''},
-  {id:'s27',subj:'Falta combo Bob\'s Play — autoatendimento',from:'erick.gouvea@bffc.com.br',date:'2026-05-05',status:'replied',pri:'med',dept:'Sistemas / Integrações',cats:['c5'],prev:'Respondeu que está cobrando GCOM e dará retorno.',reply:'Estamos cobrando a GCOM e daremos posicionamento até o final do dia.',link:''},
+  {id:'s4',subj:'Problema AA — Loja Rodoviária Salvador',from:'bobs.rodoviariasalvador@bffcuap.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Sistemas / Integrações',cats:['c5'],prev:'Loja sofrendo problemas sistemáticos com GCOM. Autoatendimento travando frequentemente, suporte sem resolução.',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yvrAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s5',subj:'Conciliação PIX — thread completa (Carlos + Fabrício)',from:'carlos.souza@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Carlos alertou: não é venda iFood, é via AA. Thread com Marcos Mattos em cópia. Precisa posicionamento.',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yvjAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s6',subj:'FCR Law — Reforma Tributária (via Marcos Mattos)',from:'marcos.mattos@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Financeiro / Fiscal',cats:['c7','c11'],prev:'Marcos encaminhou radar da FCR Law e marcou você: "Estamos prontos para as obrigações abaixo?" Kaué respondeu que CBS/IBS estão sendo feitos desde jan/2026.',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yvnAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s7',subj:'Verificação de faturamento — admti',from:'admti@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Divergências em NFs/faturas do mês com anexo.',reply:'',link:''},
+  {id:'s8',subj:'MRE Degust — Acesso Protheus vendas',from:'luana.lima@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Luana precisa acessar vendas via Protheus. Módulo financeiro não exibe dados.',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yuXAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s9',subj:'Cotação celular — FSRental tabela completa',from:'luciano.lopes@fsrental.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Tabela completa com 9 itens para 36 e 48 meses enviada. Precisa decidir entre Galaxy A37 (FSRental) x A36 (Office Total R$96/mês com seguro).',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yvoAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s10',subj:'Integração Onfly x BFFC Protheus',from:'ellano.carvalho@onfly.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Sistemas / Integrações',cats:['c3','c5'],prev:'9 empresas com ambiente criado. Precisa alinhar quais conduzirão o fluxo.',reply:'',link:''},
+  {id:'s11',subj:'SeSuite x Infraspeak — orçamento pendente',from:'fabricio.falco@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'Sistemas / Integrações',cats:['c2','c3'],prev:'Fabrício cobrando orçamento da Techub. Solicitado desde 28/04.',reply:'',link:''},
+  {id:'s12',subj:'Chamados GCOM — reunião 12/05 e 26/05',from:'jacques.araujo@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Sistemas / Integrações',cats:['c5'],prev:'Jacques (Marcos Mattos em cópia) sugere 12 e 26/mai às 10h. Aguarda confirmação.',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yuTAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s13',subj:'Videosoft — Pedido nº 14710 QQ Grande Rio III',from:'jeane.tavares@videosoft.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Fatura enviada. Verificar boleto e lançamento.',reply:'',link:''},
+  {id:'s14',subj:'WOW Tec — Orçamento terminal CI 135496',from:'patrick.teixeira@wow.tec.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Orçamento de reparo enviado. Aguardando aprovação.',reply:'',link:''},
+  {id:'s15',subj:'Novo colaborador — Diana Cristina da Silva',from:'glayciane.silva@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'high',dept:'RH / TI Interno',cats:['c8'],prev:'Provisionar ferramentas e acessos.',reply:'',link:''},
+  {id:'s16',subj:'Alinhamento Cadastro — contato Adccont',from:'admti@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'med',dept:'RH / TI Interno',cats:['c8'],prev:'ADM TI te marcando: há mais contatos na Adccont?',reply:'',link:''},
+  {id:'s17',subj:'Relatório Vendas UAP — até 04/05',from:'planejamento@bffc.com.br',date:'2026-05-05',status:'waiting-me',pri:'low',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Faróis diários Bob\'s/KFC/Pizza Hut até 04/05. Link no e-mail.',reply:'',link:''},
+  // AGUARDA TERCEIRO
+  {id:'s18',subj:'OS LINX 780369 — cancelamento QSQ Salvador',from:'gestaooperadoras@linx.com.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Conectividade / Fornecedores',cats:['c6','c4'],prev:'Você pediu cancelamento para Camila Silva e verificação de multa.',reply:'Camila, por favor seguir com o cancelamento e verificar se há multa.',link:''},
+  {id:'s19',subj:'SPED Bob\'s Nordeste — Faturamento Abril 2026',from:'luanette.bento@grupomultipla.com.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Financeiro / Fiscal',cats:['c7'],prev:'Hellen enviou dados atualizados. Você respondeu "estamos verificando".',reply:'Boa tarde, estamos verificando.',link:''},
+  {id:'s20',subj:'Central XML — Notas Faltantes',from:'kaue.moreira@bffc.com.br',date:'2026-05-05',status:'waiting-them',pri:'med',dept:'Financeiro / Fiscal',cats:['c7','c5'],prev:'Kaué acionou Central XML novamente. Aguarda retorno deles.',reply:'',link:''},
+  {id:'s21',subj:'Techub Digital x BFFC — pendências',from:'daniela.nogueira@techub.com.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Sistemas / Integrações',cats:['c3','c10'],prev:'Daniela confirmando entregas com time de projetos.',reply:'ok, fico no aguardo.',link:''},
+  {id:'s22',subj:'Chamado LINX 2026.REC007.03427 — NFCOM',from:'rossane.lemos@acene.recife.br',date:'2026-05-05',status:'waiting-them',pri:'high',dept:'Sistemas / Integrações',cats:['c5','c7'],prev:'Você acionou ADM TI para corrigir NFCOM no REC006.',reply:'@ADM TI por gentileza, poderia corrigir.',link:''},
+  {id:'s23',subj:'Impressora locação Bob\'s — instalação',from:'renato.conceicao@bffc.com.br',date:'2026-05-05',status:'waiting-them',pri:'med',dept:'Equipamentos / Hardware',cats:['c1','c5'],prev:'Você pediu passo a passo para Carolina (Simpress).',reply:'@Carolina, Renato está de férias. Pode me passar o passo a passo?',link:''},
+  {id:'s24',subj:'Transferência titularidade Bob\'s & Spoleto Maceió',from:'Leandro.lacerda@brazilairr.com.br',date:'2026-05-05',status:'waiting-them',pri:'med',dept:'RH / TI Interno',cats:['c8'],prev:'Aguarda validação de Jeane Tavares.',reply:'',link:''},
+  // RESPONDIDOS
+  {id:'s25',subj:'TV Menu / KFC Norte Shopping 1 — CAPEX aprovado',from:'hugo@otechinfo.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Equipamentos / Hardware',cats:['c1','c9'],prev:'Pedido nº 186876 autorizado. Classificado como CAPEX.',reply:'Pode seguir. @ADM TI classificar como CAPEX.',link:''},
+  {id:'s26',subj:'Downgrade — C. Emilia Conrado da Silva',from:'camila.silva@bffc.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Conectividade / Fornecedores',cats:['c6'],prev:'Você informou que a loja não é mais da BFFC.',reply:'Essa loja não é mais nossa.',link:''},
+  {id:'s27',subj:'3S — Ajuste CEST / saída do Igor',from:'kaue.moreira@bffc.com.br',date:'2026-05-05',status:'replied',pri:'med',dept:'Sistemas / Integrações',cats:['c5','c3'],prev:'Você comunicou saída do Igor e solicitou avanço no chamado.',reply:'Comunico a saída do Igor. Elvis, consegue avançar com o chamado?',link:''},
+  {id:'s28',subj:'Falta combo Bob\'s Play — autoatendimento',from:'erick.gouvea@bffc.com.br',date:'2026-05-05',status:'replied',pri:'med',dept:'Sistemas / Integrações',cats:['c5'],prev:'Você respondeu que está cobrando GCOM.',reply:'Estamos cobrando a GCOM e daremos posicionamento até o final do dia.',link:''},
+  {id:'s29',subj:'Parametrização Protheus — Reforma Tributária',from:'renata.marsillac@bffc.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Financeiro / Fiscal',cats:['c7','c11'],prev:'Você pediu para Beatriz organizar agenda com Evolluz.',reply:'@Beatriz pode organizar as agendas com a Evolluz?',link:''},
+  {id:'s30',subj:'Laudo TV Samsung — Bob\'s Aeroporto Recife',from:'pedro@mcsolucoesemtecnologia.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Você perguntou sobre tamanho da tela.',reply:'Se comprarmos outra TV pode haver diferenças. Qual é o tamanho da tela?',link:''},
+  {id:'s31',subj:'Orçamento chamador de senhas — Bob\'s Recife',from:'Tassio@mcsolucoesemtecnologia.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'Equipamentos / Hardware',cats:['c1','c2'],prev:'Solicitou cotação com monitor de 32".',reply:'Pode enviar a cotação? Monitor precisa ser de 32 polegadas.',link:''},
+  {id:'s32',subj:'Troca de aparelho — Aline Corrêa',from:'aline.correa@bffc.com.br',date:'2026-05-05',status:'replied',pri:'low',dept:'RH / TI Interno',cats:['c8','c1'],prev:'Aguarda assinatura contrato. Prazo ~20 dias.',reply:'Aguardando assinatura do contrato. Prazo ~20 dias.',link:''},
+  {id:'s33',subj:'BFFC | Impacto Reforma Tributária — contatos projeto',from:'marcos.mattos@bffc.com.br',date:'2026-05-05',status:'replied',pri:'med',dept:'Financeiro / Fiscal',cats:['c7','c11'],prev:'Marcos indicou contatos (Carlos Eduardo, Renata, Kaué) para FCR Law.',reply:'',link:'https://outlook.office365.com/owa/?ItemID=AAMkADkyZWVmMDZjLThlYmEtNDI4Yy04Y2NkLTBhNzgwNTIzZmE4MwBGAAAAAACt7tYaszunQbi5u4dhjsi4BwDfKW2BF045TZ8Hz51%2B%2FlqDAAAAAAEMAADfKW2BF045TZ8Hz51%2B%2FlqDAAKh9yvcAAA%3D&exvsurl=1&viewmodel=ReadMessageItem'},
+  {id:'s34',subj:'Chamados UAF — Abril 2026 (Evolluz)',from:'beatriz.campezzi@bffc.com.br',date:'2026-05-05',status:'replied',pri:'med',dept:'Sistemas / Integrações',cats:['c5'],prev:'Você questionou absorção interna de chamados — valores altos.',reply:'Valores estão ficando altos e não orçei isso. Conseguimos absorver internamente?',link:''},
 ];
 
-function load() {
-  try {
-    const r = localStorage.getItem(KEY);
-    const d = r ? JSON.parse(r) : {};
-    tasks = d.tasks || [...SEED_TASKS];
-    cats = d.cats || [...DEFAULT_CATS];
-  } catch { tasks = [...SEED_TASKS]; cats = [...DEFAULT_CATS]; }
-}
-function save() {
-  try { localStorage.setItem(KEY, JSON.stringify({tasks, cats})); } catch(e){}
-}
-function genId() { return 'x' + Date.now() + Math.random().toString(36).slice(2,5); }
+let tasks=[],cats=[],editId=null;
+let viewFilter='all',priFilter='all',dayFilter=null,catFilter=null;
+let secOpen={};DEPTS.forEach(d=>secOpen[d]=true);
 
-function getCat(id) { return cats.find(c => c.id === id); }
-
-// ---- STATUS CYCLE ----
-function cycleStatus(id) {
-  const t = tasks.find(x => x.id === id); if (!t) return;
-  const ord = ['waiting-me','waiting-them','replied','done'];
-  const i = ord.indexOf(t.status);
-  t.status = ord[i < 0 ? 1 : (i+1) % ord.length];
-  save(); render(); updateSidebar();
-  const lbl = {'waiting-me':'🔴 Aguarda sua resposta','waiting-them':'🔵 Aguarda terceiro','replied':'✅ Respondido','done':'📁 Arquivado'};
-  toast(lbl[t.status] || 'Atualizado');
+function load(){
+  try{const r=localStorage.getItem(KEY);const d=r?JSON.parse(r):{};tasks=d.tasks||[...SEED_TASKS];cats=d.cats||[...DEFAULT_CATS]}
+  catch{tasks=[...SEED_TASKS];cats=[...DEFAULT_CATS]}
+  if(!tasks.length)tasks=[...SEED_TASKS];
 }
+function save(){try{localStorage.setItem(KEY,JSON.stringify({tasks,cats}))}catch(e){}}
+function genId(){return 'x'+Date.now()+Math.random().toString(36).slice(2,5)}
+function getCat(id){return cats.find(c=>c.id===id)}
 
-function deleteTask(id) {
-  if (!confirm('Remover?')) return;
-  tasks = tasks.filter(x => x.id !== id);
-  save(); render(); updateSidebar(); toast('🗑 Removido');
+function cycleStatus(id){
+  const t=tasks.find(x=>x.id===id);if(!t)return;
+  const ord=['waiting-me','waiting-them','replied','done'];
+  const i=ord.indexOf(t.status);t.status=ord[i<0?1:(i+1)%ord.length];
+  save();render();updateSidebar();
+  const lbl={'waiting-me':'🔴 Aguarda sua resposta','waiting-them':'🔵 Aguarda terceiro','replied':'✅ Respondido','done':'📁 Arquivado'};
+  toast(lbl[t.status]||'Atualizado');
 }
+function deleteTask(id){if(!confirm('Remover?'))return;tasks=tasks.filter(x=>x.id!==id);save();render();updateSidebar();toast('🗑 Removido')}
 
-// ---- MODAL ----
-function openModal(id) {
-  editId = id || null;
-  const t = id ? tasks.find(x => x.id === id) : null;
-  document.getElementById('modal-title').textContent = t ? 'Editar' : 'Adicionar e-mail';
-  document.getElementById('f-subj').value = t ? t.subj : '';
-  document.getElementById('f-from').value = t ? t.from : '';
-  document.getElementById('f-prev').value = t ? t.prev : '';
-  document.getElementById('f-reply').value = t ? t.reply : '';
-  document.getElementById('f-date').value = t ? t.date : new Date().toISOString().slice(0,10);
-  document.getElementById('f-status').value = t ? t.status : 'waiting-me';
-  document.getElementById('f-pri').value = t ? t.pri : 'med';
-  document.getElementById('f-dept').value = t ? t.dept : DEPTS[0];
-  document.getElementById('f-link').value = t ? t.link : '';
-  renderCatSelector(t ? t.cats : []);
+function openModal(id){
+  editId=id||null;const t=id?tasks.find(x=>x.id===id):null;
+  document.getElementById('modal-title').textContent=t?'Editar':'Adicionar e-mail';
+  document.getElementById('f-subj').value=t?t.subj:'';
+  document.getElementById('f-from').value=t?t.from:'';
+  document.getElementById('f-prev').value=t?t.prev:'';
+  document.getElementById('f-reply').value=t?t.reply:'';
+  document.getElementById('f-date').value=t?t.date:new Date().toISOString().slice(0,10);
+  document.getElementById('f-status').value=t?t.status:'waiting-me';
+  document.getElementById('f-pri').value=t?t.pri:'med';
+  document.getElementById('f-dept').value=t?t.dept:DEPTS[0];
+  document.getElementById('f-link').value=t?t.link:'';
+  renderCatSelector(t?t.cats:[]);
   document.getElementById('modal').classList.add('open');
 }
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
-function closeModalOut(e) { if (e.target.id === 'modal') closeModal(); }
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function closeModalOut(e){if(e.target.id==='modal')closeModal()}
 
-function renderCatSelector(selected = []) {
-  const el = document.getElementById('cat-selector');
-  el.innerHTML = cats.map(c => `
-    <button class="cat-toggle ${selected.includes(c.id) ? 'sel' : ''}"
-      style="${selected.includes(c.id) ? `background:${c.color};border-color:${c.color}` : ''}"
-      data-cid="${c.id}" onclick="toggleCatSel('${c.id}',this)">
-      ${c.name}
-    </button>
-  `).join('');
+function renderCatSelector(selected=[]){
+  document.getElementById('cat-selector').innerHTML=cats.map(c=>`
+    <button class="cat-toggle ${selected.includes(c.id)?'sel':''}"
+      style="${selected.includes(c.id)?`background:${c.color};border-color:${c.color};color:#fff`:''}"
+      data-cid="${c.id}" onclick="toggleCatSel('${c.id}',this)">${c.name}</button>`).join('');
 }
-
-function toggleCatSel(cid, btn) {
-  const c = getCat(cid); if (!c) return;
+function toggleCatSel(cid,btn){
+  const c=getCat(cid);if(!c)return;
   btn.classList.toggle('sel');
-  if (btn.classList.contains('sel')) {
-    btn.style.background = c.color;
-    btn.style.borderColor = c.color;
-    btn.style.color = '#fff';
-  } else {
-    btn.style.background = '';
-    btn.style.borderColor = '';
-    btn.style.color = '';
-  }
+  if(btn.classList.contains('sel')){btn.style.background=c.color;btn.style.borderColor=c.color;btn.style.color='#fff'}
+  else{btn.style.background='';btn.style.borderColor='';btn.style.color=''}
 }
-
-function addNewCat() {
-  const name = document.getElementById('f-newcat').value.trim();
-  if (!name) return;
-  if (cats.find(c => c.name.toLowerCase() === name.toLowerCase())) { toast('Já existe'); return; }
-  const colors = ['#7c6af7','#e8a84a','#4a9de8','#4caf7d','#e87a4a','#4acfb8','#e84aab','#a06af7','#e05252','#4acfb8','#888'];
-  const color = colors[cats.length % colors.length];
-  const nc = {id: genId(), name, color};
-  cats.push(nc);
-  document.getElementById('f-newcat').value = '';
+function addNewCat(){
+  const name=document.getElementById('f-newcat').value.trim();if(!name)return;
+  if(cats.find(c=>c.name.toLowerCase()===name.toLowerCase())){toast('Já existe');return}
+  const colors=['#7c6af7','#e8a84a','#4a9de8','#4caf7d','#e87a4a','#4acfb8','#e84aab','#a06af7'];
+  const nc={id:genId(),name,color:colors[cats.length%colors.length]};
+  cats.push(nc);document.getElementById('f-newcat').value='';
   renderCatSelector(getSelectedCats());
-  // auto-select new
-  setTimeout(() => {
-    const btn = document.querySelector(`[data-cid="${nc.id}"]`);
-    if (btn) toggleCatSel(nc.id, btn);
-  }, 50);
-  save(); updateCatNav(); toast('＋ Categoria criada');
+  setTimeout(()=>{const btn=document.querySelector(`[data-cid="${nc.id}"]`);if(btn)toggleCatSel(nc.id,btn)},50);
+  save();updateCatNav();toast('＋ Categoria criada');
+}
+function getSelectedCats(){return[...document.querySelectorAll('.cat-toggle.sel')].map(b=>b.dataset.cid)}
+
+function saveTask(){
+  const subj=document.getElementById('f-subj').value.trim();if(!subj){alert('Informe o assunto');return}
+  const d={subj,from:document.getElementById('f-from').value.trim(),prev:document.getElementById('f-prev').value.trim(),reply:document.getElementById('f-reply').value.trim(),date:document.getElementById('f-date').value,status:document.getElementById('f-status').value,pri:document.getElementById('f-pri').value,dept:document.getElementById('f-dept').value,cats:getSelectedCats(),link:document.getElementById('f-link').value.trim()};
+  if(editId){const i=tasks.findIndex(x=>x.id===editId);if(i>=0)tasks[i]={...tasks[i],...d}}
+  else tasks.push({id:genId(),...d});
+  save();render();updateSidebar();updateCatNav();closeModal();
+  toast(editId?'✏️ Atualizado':'＋ Adicionado');editId=null;
 }
 
-function getSelectedCats() {
-  return [...document.querySelectorAll('.cat-toggle.sel')].map(b => b.dataset.cid);
+let activeTab='tasks';
+function showTab(tab,btn){
+  activeTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  else{const tabs=document.querySelectorAll('.tab');if(tab==='tasks')tabs[0].classList.add('active');else tabs[1].classList.add('active')}
+  document.getElementById('task-panel').style.display=tab==='tasks'?'':'none';
+  document.getElementById('report-panel').style.display=tab==='report'?'':'none';
+  document.getElementById('stats-area').style.display=tab==='tasks'?'':'none';
+  if(tab==='report')renderReport();
 }
 
-function saveTask() {
-  const subj = document.getElementById('f-subj').value.trim();
-  if (!subj) { alert('Informe o assunto'); return; }
-  const d = {
-    subj, from: document.getElementById('f-from').value.trim(),
-    prev: document.getElementById('f-prev').value.trim(),
-    reply: document.getElementById('f-reply').value.trim(),
-    date: document.getElementById('f-date').value,
-    status: document.getElementById('f-status').value,
-    pri: document.getElementById('f-pri').value,
-    dept: document.getElementById('f-dept').value,
-    cats: getSelectedCats(),
-    link: document.getElementById('f-link').value.trim(),
-  };
-  if (editId) {
-    const i = tasks.findIndex(x => x.id === editId);
-    if (i >= 0) tasks[i] = {...tasks[i], ...d};
-  } else {
-    tasks.push({id: genId(), ...d});
-  }
-  save(); render(); updateSidebar(); updateCatNav(); closeModal();
-  toast(editId ? '✏️ Atualizado' : '＋ Adicionado'); editId = null;
+function setView(v,btn){
+  viewFilter=v;dayFilter=null;catFilter=null;
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.cat-nav-item,.day-item').forEach(b=>b.classList.remove('active'));
+  const lbl={all:'Todos',high:'Alta prioridade','waiting-me':'Aguarda minha resposta','waiting-them':'Aguarda terceiro',replied:'Respondidos',done:'Arquivados'};
+  document.getElementById('view-title').textContent=lbl[v]||v;
+  showTab('tasks');render();
 }
-
-// ---- VIEWS ----
-let activeTab = 'tasks';
-
-function showTab(tab, btn) {
-  activeTab = tab;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  else {
-    const tabs = document.querySelectorAll('.tab');
-    if (tab === 'tasks') tabs[0].classList.add('active');
-    else tabs[1].classList.add('active');
-  }
-  document.getElementById('task-panel').style.display = tab === 'tasks' ? '' : 'none';
-  document.getElementById('report-panel').style.display = tab === 'report' ? '' : 'none';
-  document.getElementById('stats-area').style.display = tab === 'tasks' ? '' : 'none';
-  if (tab === 'report') renderReport();
-}
-
-function setView(v, btn) {
-  viewFilter = v; dayFilter = null; catFilter = null;
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+function setCatFilter(cid,btn){
+  catFilter=cid;viewFilter='all';dayFilter=null;
+  document.querySelectorAll('.nav-btn,.cat-nav-item').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.cat-nav-item').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.day-item').forEach(el => el.classList.remove('active'));
-  const lbl = {all:'Todos',high:'Alta prioridade','waiting-me':'Aguarda minha resposta','waiting-them':'Aguarda terceiro',replied:'Respondidos',done:'Arquivados'};
-  document.getElementById('view-title').textContent = lbl[v] || v;
-  showTab('tasks'); render();
+  const c=getCat(cid);document.getElementById('view-title').textContent=c?c.name:cid;
+  showTab('tasks');render();
 }
-
-function setCatFilter(cid, btn) {
-  catFilter = cid; viewFilter = 'all'; dayFilter = null;
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.cat-nav-item').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const c = getCat(cid);
-  document.getElementById('view-title').textContent = c ? c.name : cid;
-  showTab('tasks'); render();
+function setPri(p,btn){priFilter=p;document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render()}
+function setDay(d){
+  dayFilter=d;viewFilter='all';catFilter=null;
+  document.querySelectorAll('.nav-btn,.cat-nav-item').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.day-item').forEach(el=>el.classList.toggle('active',el.dataset.day===d));
+  document.getElementById('view-title').textContent=fmtD(d);showTab('tasks');render();
 }
+function fmtD(d){if(!d)return'';const[y,m,day]=d.split('-');return`${day}/${m}/${y}`}
 
-function setPri(p, btn) {
-  priFilter = p;
-  document.querySelectorAll('.chip').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  render();
-}
-
-function setDay(d) {
-  dayFilter = d; viewFilter = 'all'; catFilter = null;
-  document.querySelectorAll('.nav-btn,.cat-nav-item').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.day-item').forEach(el => el.classList.toggle('active', el.dataset.day === d));
-  document.getElementById('view-title').textContent = fmtD(d);
-  showTab('tasks'); render();
-}
-
-function fmtD(d) {
-  if (!d) return '';
-  const [y,m,day] = d.split('-');
-  return `${day}/${m}/${y}`;
-}
-
-function getFiltered() {
-  const q = (document.getElementById('search')?.value || '').toLowerCase();
-  return tasks.filter(t => {
-    if (dayFilter && t.date !== dayFilter) return false;
-    if (catFilter && !(t.cats || []).includes(catFilter)) return false;
-    if (viewFilter === 'high' && t.pri !== 'high') return false;
-    if (!['all','high'].includes(viewFilter) && t.status !== viewFilter) return false;
-    if (priFilter !== 'all' && t.pri !== priFilter) return false;
-    if (q && !t.subj.toLowerCase().includes(q) && !(t.prev||'').toLowerCase().includes(q) && !(t.from||'').toLowerCase().includes(q)) return false;
+function getFiltered(){
+  const q=(document.getElementById('search')?.value||'').toLowerCase();
+  return tasks.filter(t=>{
+    if(dayFilter&&t.date!==dayFilter)return false;
+    if(catFilter&&!(t.cats||[]).includes(catFilter))return false;
+    if(viewFilter==='high'&&t.pri!=='high')return false;
+    if(!['all','high'].includes(viewFilter)&&t.status!==viewFilter)return false;
+    if(priFilter!=='all'&&t.pri!==priFilter)return false;
+    if(q&&!t.subj.toLowerCase().includes(q)&&!(t.prev||'').toLowerCase().includes(q)&&!(t.from||'').toLowerCase().includes(q))return false;
     return true;
   });
 }
-
-function statusBadge(st) {
-  const map = {
-    'waiting-me': '<span class="badge badge-wm">🔴 Aguarda minha resposta</span>',
-    'waiting-them': '<span class="badge badge-wt">🔵 Aguarda terceiro</span>',
-    'replied': '<span class="badge badge-rep">✅ Respondido</span>',
-    'done': '<span class="badge badge-done">📁 Arquivado</span>',
-  };
-  return map[st] || '';
+function statusBadge(st){
+  return{'waiting-me':'<span class="badge badge-wm">🔴 Aguarda minha resposta</span>','waiting-them':'<span class="badge badge-wt">🔵 Aguarda terceiro</span>','replied':'<span class="badge badge-rep">✅ Respondido</span>','done':'<span class="badge badge-done">📁 Arquivado</span>'}[st]||'';
 }
 
-// ---- RENDER ----
-function render() {
-  const filtered = getFiltered();
-  const wm = tasks.filter(t => t.status === 'waiting-me').length;
-  const wt = tasks.filter(t => t.status === 'waiting-them').length;
-  const rep = tasks.filter(t => t.status === 'replied').length;
-  const done = tasks.filter(t => t.status === 'done').length;
-  const pct = tasks.length ? Math.round((rep + done) / tasks.length * 100) : 0;
-
-  document.getElementById('s-total').textContent = filtered.length;
-  document.getElementById('s-wm').textContent = filtered.filter(t => t.status === 'waiting-me').length;
-  document.getElementById('s-wt').textContent = filtered.filter(t => t.status === 'waiting-them').length;
-  document.getElementById('s-rep').textContent = filtered.filter(t => t.status === 'replied').length;
-  document.getElementById('s-arch').textContent = filtered.filter(t => t.status === 'done').length;
-  document.getElementById('prog-fill').style.width = pct + '%';
-
-  const grouped = {};
-  DEPTS.forEach(d => grouped[d] = []);
-  filtered.forEach(t => { (grouped[t.dept] || grouped['Outros']).push(t); });
-
-  let html = ''; let any = false;
-  DEPTS.forEach(dept => {
-    const items = grouped[dept]; if (!items.length) return; any = true;
-    const open = secOpen[dept] !== false;
-    html += `<div class="sec-wrap">
-      <div class="sec-head" onclick="toggleSec('${dept.replace(/'/g,"\\'")}')">
-        <span class="sec-icon">${DEPT_ICONS[dept]||'📌'}</span>
-        <span class="sec-name">${dept}</span>
-        <span class="sec-cnt">${items.length}</span>
-        <span class="sec-arr${open ? '' : ' closed'}">▾</span>
-      </div>`;
-    if (open) {
-      html += '<div class="cards">';
-      items.forEach(t => {
-        const cbCls = {'replied':'cb s-replied','done':'cb s-done','waiting-them':'cb s-waiting-them'}[t.status] || 'cb';
-        const priCls = {high:'p-high',med:'p-med',low:'p-low'}[t.pri] || 'p-low';
-        const cardCls = t.status === 'done' ? ' done' : ` ${t.status}`;
-        const taskCats = (t.cats || []).map(cid => {
-          const c = getCat(cid);
-          return c ? `<span class="cat-chip" style="background:${c.color}22;color:${c.color};border:1px solid ${c.color}44" onclick="setCatFilter('${c.id}',this)">${c.name}</span>` : '';
-        }).join('');
-        const replySnip = t.reply ? `<div class="card-reply">"${t.reply.slice(0,130)}${t.reply.length > 130 ? '…' : ''}"</div>` : '';
-        const openLink = t.link ? `<a class="open-link" href="${t.link}" target="_blank">↗ Outlook</a>` : '';
-        html += `<div class="card${cardCls}">
-          <div class="${cbCls}" onclick="cycleStatus('${t.id}')" title="Avançar status"></div>
-          <div class="pri ${priCls}"></div>
-          <div class="card-body">
-            <div class="card-subj">${t.subj}</div>
-            <div class="card-meta">${t.from || '—'} · ${fmtD(t.date)}</div>
-            ${t.prev ? `<div class="card-prev">${t.prev}</div>` : ''}
-            ${replySnip}
-            <div class="card-footer">${statusBadge(t.status)}${taskCats}${openLink}</div>
-          </div>
-          <div class="card-acts">
-            <button class="icon-btn" onclick="openModal('${t.id}')" title="Editar">✏️</button>
-            <button class="icon-btn del" onclick="deleteTask('${t.id}')" title="Remover">🗑</button>
-          </div>
-        </div>`;
+function render(){
+  const filtered=getFiltered();
+  const rep=tasks.filter(t=>t.status==='replied').length;const done=tasks.filter(t=>t.status==='done').length;
+  const pct=tasks.length?Math.round((rep+done)/tasks.length*100):0;
+  document.getElementById('s-total').textContent=filtered.length;
+  document.getElementById('s-wm').textContent=filtered.filter(t=>t.status==='waiting-me').length;
+  document.getElementById('s-wt').textContent=filtered.filter(t=>t.status==='waiting-them').length;
+  document.getElementById('s-rep').textContent=filtered.filter(t=>t.status==='replied').length;
+  document.getElementById('s-arch').textContent=filtered.filter(t=>t.status==='done').length;
+  document.getElementById('prog-fill').style.width=pct+'%';
+  const grouped={};DEPTS.forEach(d=>grouped[d]=[]);
+  filtered.forEach(t=>{(grouped[t.dept]||grouped['Outros']).push(t)});
+  let html='';let any=false;
+  DEPTS.forEach(dept=>{
+    const items=grouped[dept];if(!items.length)return;any=true;
+    const open=secOpen[dept]!==false;
+    html+=`<div class="sec-wrap"><div class="sec-head" onclick="toggleSec('${dept.replace(/'/g,"\\'")}')"><span class="sec-icon">${DEPT_ICONS[dept]||'📌'}</span><span class="sec-name">${dept}</span><span class="sec-cnt">${items.length}</span><span class="sec-arr${open?'':' closed'}">▾</span></div>`;
+    if(open){
+      html+='<div class="cards">';
+      items.forEach(t=>{
+        const cbCls={replied:'cb s-replied',done:'cb s-done','waiting-them':'cb s-waiting-them'}[t.status]||'cb';
+        const priCls={high:'p-high',med:'p-med',low:'p-low'}[t.pri]||'p-low';
+        const cardCls=t.status==='done'?' done':` ${t.status}`;
+        const taskCats=(t.cats||[]).map(cid=>{const c=getCat(cid);return c?`<span class="cat-chip" style="background:${c.color}22;color:${c.color};border:1px solid ${c.color}44" onclick="setCatFilter('${c.id}',this)">${c.name}</span>`:''}).join('');
+        const replySnip=t.reply?`<div class="card-reply">"${t.reply.slice(0,130)}${t.reply.length>130?'…':''}"</div>`:'';
+        const openLink=t.link?`<a class="open-link" href="${t.link}" target="_blank">↗ Outlook</a>`:'';
+        html+=`<div class="card${cardCls}"><div class="${cbCls}" onclick="cycleStatus('${t.id}')" title="Avançar status"></div><div class="pri ${priCls}"></div><div class="card-body"><div class="card-subj">${t.subj}</div><div class="card-meta">${t.from||'—'} · ${fmtD(t.date)}</div>${t.prev?`<div class="card-prev">${t.prev}</div>`:''}${replySnip}<div class="card-footer">${statusBadge(t.status)}${taskCats}${openLink}</div></div><div class="card-acts"><button class="icon-btn" onclick="openModal('${t.id}')" title="Editar">✏️</button><button class="icon-btn del" onclick="deleteTask('${t.id}')" title="Remover">🗑</button></div></div>`;
       });
-      html += '</div>';
+      html+='</div>';
     }
-    html += '</div>';
+    html+='</div>';
   });
-  if (!any) html = '<div class="empty"><div class="empty-icon">📭</div>Nenhum e-mail para este filtro</div>';
-  document.getElementById('task-list').innerHTML = html;
+  if(!any)html='<div class="empty"><div class="empty-icon">📭</div>Nenhum e-mail para este filtro</div>';
+  document.getElementById('task-list').innerHTML=html;
 }
+function toggleSec(n){secOpen[n]=!secOpen[n];render()}
 
-function toggleSec(n) { secOpen[n] = !secOpen[n]; render(); }
-
-// ---- REPORT ----
-let reportMonth = null;
-
-function renderReport() {
-  // Months available
-  const months = [...new Set(tasks.map(t => t.date ? t.date.slice(0,7) : null).filter(Boolean))].sort((a,b) => b.localeCompare(a));
-  if (!reportMonth || !months.includes(reportMonth)) reportMonth = months[0] || null;
-
-  // Month filter UI
-  document.getElementById('month-filter').innerHTML = months.map(m => {
-    const [y, mo] = m.split('-');
-    const label = new Date(y, mo-1).toLocaleDateString('pt-BR', {month:'long', year:'numeric'});
-    return `<button class="chip ${reportMonth === m ? 'on' : ''}" onclick="setReportMonth('${m}',this)">${label}</button>`;
-  }).join('');
-
-  // Filter tasks by month
-  const inMonth = tasks.filter(t => !reportMonth || (t.date && t.date.startsWith(reportMonth)));
-
-  // Group by category
-  const catGroups = cats.map(c => ({
-    ...c,
-    items: inMonth.filter(t => (t.cats || []).includes(c.id))
-  })).filter(g => g.items.length > 0);
-
-  // Uncategorized
-  const uncatItems = inMonth.filter(t => !t.cats || t.cats.length === 0);
-
-  let html = '';
-  if (!catGroups.length && !uncatItems.length) {
-    html = '<div class="empty"><div class="empty-icon">📊</div>Nenhum e-mail no período selecionado</div>';
-  } else {
-    html += '<div class="report-grid">';
-    catGroups.forEach(g => {
-      const wm = g.items.filter(t => t.status === 'waiting-me').length;
-      const rep = g.items.filter(t => t.status === 'replied').length;
-      html += `<div class="report-card">
-        <div class="rc-header">
-          <div class="rc-dot" style="background:${g.color}"></div>
-          <div class="rc-name" style="color:${g.color}">${g.name}</div>
-          <div class="rc-cnt">${g.items.length} e-mails</div>
-        </div>
-        <div class="rc-items">
-          ${g.items.slice(0,5).map(t => `
-            <div class="rc-item" title="${t.subj}">
-              <span style="color:${{'waiting-me':'var(--red)','waiting-them':'var(--blue)','replied':'var(--green)','done':'var(--text3)'}[t.status]||'var(--text2)'}">●</span>
-              ${t.subj}
-            </div>`).join('')}
-          ${g.items.length > 5 ? `<div style="font-size:11px;color:var(--text3);padding:4px 0">+${g.items.length - 5} mais...</div>` : ''}
-        </div>
-        <div style="display:flex;gap:12px;margin-top:10px;font-size:11px;font-family:var(--mono)">
-          <span style="color:var(--red)">🔴 ${wm} aguardando</span>
-          <span style="color:var(--green)">✅ ${rep} respondidos</span>
-        </div>
-        <div class="rc-footer">
-          <button class="rc-btn" onclick="filterByCat('${g.id}')">Ver todos</button>
-          <button class="rc-btn" onclick="exportCatCSV('${g.id}')">↓ CSV</button>
-        </div>
-      </div>`;
+let reportMonth=null;
+function renderReport(){
+  const months=[...new Set(tasks.map(t=>t.date?t.date.slice(0,7):null).filter(Boolean))].sort((a,b)=>b.localeCompare(a));
+  if(!reportMonth||!months.includes(reportMonth))reportMonth=months[0]||null;
+  document.getElementById('month-filter').innerHTML=months.map(m=>{const[y,mo]=m.split('-');const label=new Date(y,mo-1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'});return`<button class="chip ${reportMonth===m?'on':''}" onclick="setReportMonth('${m}',this)">${label}</button>`}).join('');
+  const inMonth=tasks.filter(t=>!reportMonth||(t.date&&t.date.startsWith(reportMonth)));
+  const catGroups=cats.map(c=>({...c,items:inMonth.filter(t=>(t.cats||[]).includes(c.id))})).filter(g=>g.items.length>0);
+  const uncatItems=inMonth.filter(t=>!t.cats||t.cats.length===0);
+  let html='';
+  if(!catGroups.length&&!uncatItems.length){html='<div class="empty"><div class="empty-icon">📊</div>Nenhum e-mail no período</div>'}
+  else{
+    html+='<div class="report-grid">';
+    catGroups.forEach(g=>{
+      const wm=g.items.filter(t=>t.status==='waiting-me').length;const rep=g.items.filter(t=>t.status==='replied').length;
+      html+=`<div class="report-card"><div class="rc-header"><div class="rc-dot" style="background:${g.color}"></div><div class="rc-name" style="color:${g.color}">${g.name}</div><div class="rc-cnt">${g.items.length}</div></div><div class="rc-items">${g.items.slice(0,5).map(t=>`<div class="rc-item"><span style="color:${'waiting-me'===t.status?'var(--red)':'waiting-them'===t.status?'var(--blue)':'replied'===t.status?'var(--green)':'var(--text3)'}">●</span> ${t.subj}</div>`).join('')}${g.items.length>5?`<div style="font-size:11px;color:var(--text3);padding:4px 0">+${g.items.length-5} mais...</div>`:''}</div><div style="display:flex;gap:12px;margin-top:10px;font-size:11px;font-family:var(--mono)"><span style="color:var(--red)">🔴 ${wm}</span><span style="color:var(--green)">✅ ${rep}</span></div><div class="rc-footer"><button class="rc-btn" onclick="filterByCat('${g.id}')">Ver todos</button><button class="rc-btn" onclick="exportCatCSV('${g.id}')">↓ CSV</button></div></div>`;
     });
-    if (uncatItems.length) {
-      html += `<div class="report-card">
-        <div class="rc-header">
-          <div class="rc-dot" style="background:var(--text3)"></div>
-          <div class="rc-name" style="color:var(--text3)">Sem categoria</div>
-          <div class="rc-cnt">${uncatItems.length}</div>
-        </div>
-        <div class="rc-items">${uncatItems.slice(0,4).map(t => `<div class="rc-item">${t.subj}</div>`).join('')}</div>
-      </div>`;
-    }
-    html += '</div>';
-
-    // Summary table
-    html += `<div style="margin-top:20px">
-      <div style="font-size:11px;font-weight:500;color:var(--text2);margin-bottom:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px">Resumo do período</div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-        <table style="width:100%;border-collapse:collapse;font-size:12px">
-          <thead>
-            <tr style="border-bottom:1px solid var(--border)">
-              <th style="padding:9px 14px;text-align:left;color:var(--text3);font-weight:400;font-family:var(--mono);font-size:10px">CATEGORIA</th>
-              <th style="padding:9px 14px;text-align:center;color:var(--text3);font-weight:400;font-family:var(--mono);font-size:10px">TOTAL</th>
-              <th style="padding:9px 14px;text-align:center;color:var(--red);font-weight:400;font-family:var(--mono);font-size:10px">AGUARDA</th>
-              <th style="padding:9px 14px;text-align:center;color:var(--blue);font-weight:400;font-family:var(--mono);font-size:10px">TERCEIRO</th>
-              <th style="padding:9px 14px;text-align:center;color:var(--green);font-weight:400;font-family:var(--mono);font-size:10px">RESPONDIDO</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${catGroups.map(g => `
-              <tr style="border-bottom:1px solid var(--border)">
-                <td style="padding:8px 14px;display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:2px;background:${g.color};display:inline-block"></span>${g.name}</td>
-                <td style="padding:8px 14px;text-align:center;font-family:var(--mono)">${g.items.length}</td>
-                <td style="padding:8px 14px;text-align:center;font-family:var(--mono);color:var(--red)">${g.items.filter(t=>t.status==='waiting-me').length}</td>
-                <td style="padding:8px 14px;text-align:center;font-family:var(--mono);color:var(--blue)">${g.items.filter(t=>t.status==='waiting-them').length}</td>
-                <td style="padding:8px 14px;text-align:center;font-family:var(--mono);color:var(--green)">${g.items.filter(t=>t.status==='replied').length}</td>
-              </tr>`).join('')}
-          </tbody>
-        </table>
-      </div>
-    </div>`;
+    html+='</div>';
+    html+=`<div style="margin-top:20px"><div style="font-size:11px;font-weight:500;color:var(--text2);margin-bottom:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px">Resumo do período</div><div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr style="border-bottom:1px solid var(--border)"><th style="padding:9px 14px;text-align:left;color:var(--text3);font-weight:400;font-family:var(--mono);font-size:10px">CATEGORIA</th><th style="padding:9px 14px;text-align:center;color:var(--text3);font-weight:400;font-family:var(--mono);font-size:10px">TOTAL</th><th style="padding:9px 14px;text-align:center;color:var(--red);font-weight:400;font-family:var(--mono);font-size:10px">AGUARDA</th><th style="padding:9px 14px;text-align:center;color:var(--blue);font-weight:400;font-family:var(--mono);font-size:10px">TERCEIRO</th><th style="padding:9px 14px;text-align:center;color:var(--green);font-weight:400;font-family:var(--mono);font-size:10px">RESPONDIDO</th></tr></thead><tbody>${catGroups.map(g=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 14px;display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:2px;background:${g.color};display:inline-block"></span>${g.name}</td><td style="padding:8px 14px;text-align:center;font-family:var(--mono)">${g.items.length}</td><td style="padding:8px 14px;text-align:center;font-family:var(--mono);color:var(--red)">${g.items.filter(t=>t.status==='waiting-me').length}</td><td style="padding:8px 14px;text-align:center;font-family:var(--mono);color:var(--blue)">${g.items.filter(t=>t.status==='waiting-them').length}</td><td style="padding:8px 14px;text-align:center;font-family:var(--mono);color:var(--green)">${g.items.filter(t=>t.status==='replied').length}</td></tr>`).join('')}</tbody></table></div></div>`;
   }
-  document.getElementById('report-content').innerHTML = html;
+  document.getElementById('report-content').innerHTML=html;
 }
+function setReportMonth(m,btn){reportMonth=m;document.querySelectorAll('#month-filter .chip').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderReport()}
+function filterByCat(cid){catFilter=cid;viewFilter='all';dayFilter=null;const c=getCat(cid);document.getElementById('view-title').textContent=c?c.name:cid;showTab('tasks');document.querySelectorAll('.nav-btn,.cat-nav-item').forEach(b=>b.classList.remove('active'));render()}
 
-function setReportMonth(m, btn) {
-  reportMonth = m;
-  document.querySelectorAll('#month-filter .chip').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  renderReport();
+function toCSV(items,catName){
+  const rows=[['Assunto','De','Data','Status','Departamento','Categorias','Resposta']];
+  items.forEach(t=>{const catNames=(t.cats||[]).map(cid=>{const c=getCat(cid);return c?c.name:''}).filter(Boolean).join('; ');const st={'waiting-me':'Aguarda minha resposta','waiting-them':'Aguarda terceiro','replied':'Respondido','done':'Arquivado'}[t.status]||t.status;rows.push([t.subj,t.from,fmtD(t.date),st,t.dept,catNames,t.reply||''])});
+  const csv=rows.map(r=>r.map(v=>`"${(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);a.download=`bffc_${catName.replace(/[^a-z0-9]/gi,'_').toLowerCase()}_${reportMonth||'todos'}.csv`;a.click();toast('⬇ CSV exportado');
 }
+function exportCatCSV(cid){const c=getCat(cid);if(!c)return;const items=tasks.filter(t=>(t.cats||[]).includes(cid)&&(!reportMonth||(t.date&&t.date.startsWith(reportMonth))));toCSV(items,c.name)}
+function exportCSV(){const items=tasks.filter(t=>!reportMonth||(t.date&&t.date.startsWith(reportMonth)));toCSV(items,'todos')}
 
-function filterByCat(cid) {
-  catFilter = cid; viewFilter = 'all'; dayFilter = null;
-  const c = getCat(cid);
-  document.getElementById('view-title').textContent = c ? c.name : cid;
-  showTab('tasks');
-  document.querySelectorAll('.nav-btn,.cat-nav-item').forEach(b => b.classList.remove('active'));
-  render();
-}
-
-// ---- CSV EXPORT ----
-function toCSV(items, catName) {
-  const rows = [['Assunto','De','Data','Status','Departamento','Categorias','Resposta']];
-  items.forEach(t => {
-    const catNames = (t.cats||[]).map(cid => { const c=getCat(cid); return c?c.name:''; }).filter(Boolean).join('; ');
-    const st = {'waiting-me':'Aguarda minha resposta','waiting-them':'Aguarda terceiro','replied':'Respondido','done':'Arquivado'}[t.status]||t.status;
-    rows.push([t.subj, t.from, fmtD(t.date), st, t.dept, catNames, t.reply||'']);
-  });
-  const csv = rows.map(r => r.map(v => `"${(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-  const a = document.createElement('a');
-  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
-  a.download = `bffc_${catName.replace(/[^a-z0-9]/gi,'_').toLowerCase()}_${reportMonth||'todos'}.csv`;
-  a.click();
-  toast('⬇ CSV exportado');
-}
-
-function exportCatCSV(cid) {
-  const c = getCat(cid); if (!c) return;
-  const items = tasks.filter(t => (t.cats||[]).includes(cid) && (!reportMonth || (t.date && t.date.startsWith(reportMonth))));
-  toCSV(items, c.name);
-}
-
-function exportCSV() {
-  const items = tasks.filter(t => !reportMonth || (t.date && t.date.startsWith(reportMonth)));
-  toCSV(items, 'todos');
-}
-
-// ---- SIDEBAR UPDATES ----
-function updateSidebar() {
-  document.getElementById('cnt-all').textContent = tasks.length;
-  document.getElementById('cnt-wm').textContent = tasks.filter(t => t.status === 'waiting-me').length;
-  document.getElementById('cnt-wt').textContent = tasks.filter(t => t.status === 'waiting-them').length;
-  document.getElementById('cnt-rep').textContent = tasks.filter(t => t.status === 'replied').length;
-  document.getElementById('cnt-high').textContent = tasks.filter(t => t.pri === 'high').length;
-  document.getElementById('cnt-done').textContent = tasks.filter(t => t.status === 'done').length;
-
-  const days = [...new Set(tasks.map(t => t.date).filter(Boolean))].sort((a,b) => b.localeCompare(a));
-  document.getElementById('day-list').innerHTML = days.map(d => `
-    <div class="day-item${dayFilter === d ? ' active' : ''}" data-day="${d}" onclick="setDay('${d}')">
-      <span class="day-item-label">${fmtD(d)}</span>
-      <span class="day-item-cnt">${tasks.filter(t => t.date === d).length}</span>
-    </div>`).join('') || '<div style="font-size:11px;color:var(--text3)">Nenhum dia</div>';
-
+function updateSidebar(){
+  document.getElementById('cnt-all').textContent=tasks.length;
+  document.getElementById('cnt-wm').textContent=tasks.filter(t=>t.status==='waiting-me').length;
+  document.getElementById('cnt-wt').textContent=tasks.filter(t=>t.status==='waiting-them').length;
+  document.getElementById('cnt-rep').textContent=tasks.filter(t=>t.status==='replied').length;
+  document.getElementById('cnt-high').textContent=tasks.filter(t=>t.pri==='high').length;
+  document.getElementById('cnt-done').textContent=tasks.filter(t=>t.status==='done').length;
+  const days=[...new Set(tasks.map(t=>t.date).filter(Boolean))].sort((a,b)=>b.localeCompare(a));
+  document.getElementById('day-list').innerHTML=days.map(d=>`<div class="day-item${dayFilter===d?' active':''}" data-day="${d}" onclick="setDay('${d}')"><span class="day-item-label">${fmtD(d)}</span><span class="day-item-cnt">${tasks.filter(t=>t.date===d).length}</span></div>`).join('')||'<div style="font-size:11px;color:var(--text3)">Nenhum dia</div>';
   updateCatNav();
 }
-
-function updateCatNav() {
-  document.getElementById('cat-nav').innerHTML = cats.map(c => {
-    const cnt = tasks.filter(t => (t.cats||[]).includes(c.id)).length;
-    return `<button class="cat-nav-item${catFilter === c.id ? ' active' : ''}" onclick="setCatFilter('${c.id}',this)"
-      style="${catFilter === c.id ? `border-left-color:${c.color}` : ''}">
-      <span class="cat-dot" style="background:${c.color}"></span>
-      <span style="${catFilter === c.id ? `color:${c.color}` : ''}">${c.name}</span>
-      <span class="cat-nav-count">${cnt}</span>
-    </button>`;
-  }).join('');
+function updateCatNav(){
+  document.getElementById('cat-nav').innerHTML=cats.map(c=>{const cnt=tasks.filter(t=>(t.cats||[]).includes(c.id)).length;return`<button class="cat-nav-item${catFilter===c.id?' active':''}" onclick="setCatFilter('${c.id}',this)" style="${catFilter===c.id?`border-left-color:${c.color}`:''}"><span class="cat-dot" style="background:${c.color}"></span><span style="${catFilter===c.id?`color:${c.color}`:''}">${c.name}</span><span class="cat-nav-count">${cnt}</span></button>`}).join('');
 }
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500)}
 
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg; el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 2500);
-}
-
-document.getElementById('view-date').textContent = new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-load(); updateSidebar(); render();
+document.getElementById('view-date').textContent=new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+load();updateSidebar();render();
 </script>
 </body>
 </html>
