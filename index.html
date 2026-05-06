@@ -173,7 +173,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 <aside class="sidebar">
   <div class="logo">
     <div class="logo-title">✉ MAIL TASKS</div>
-    <div class="logo-sub">BFFC · TI</div><div class="logo-sub" style="color:var(--green);margin-top:4px;font-size:10px">⟳ Atualizado 06/05/2026 09:43</div>
+    <div class="logo-sub">BFFC · TI</div><div class="logo-sub" style="color:var(--green);margin-top:4px;font-size:10px">⟳ Atualizado 06/05/2026 09:52</div>
   </div>
   <div class="nav-section">
     <div class="nav-label">Status</div>
@@ -202,7 +202,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
         <div class="main-title" id="view-title">Todos</div>
         <div class="main-sub" id="view-date"></div>
         <div style="display:inline-flex;align-items:center;gap:5px;margin-top:5px;font-size:10px;font-family:var(--mono);color:var(--green);background:var(--green-dim);border:1px solid rgba(76,175,125,0.2);padding:3px 8px;border-radius:4px">
-          <span>⟳</span> Última atualização: 06/05/2026 09:43
+          <span>⟳</span> Última atualização: 06/05/2026 09:52
         </div>
       </div>
       <div class="header-actions">
@@ -297,7 +297,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
         <button class="btn btn-ghost" style="white-space:nowrap" onclick="addNewCat()">＋ Criar</button>
       </div>
     </div>
-    <div class="field"><label>Link no Outlook</label><input id="f-link" placeholder="https://outlook.office365.com/..."></div>
+    <div class="field"><label>Link no Outlook</label>
+      <div style="display:flex;gap:8px">
+        <input id="f-link" placeholder="https://outlook.office365.com/..." style="flex:1">
+        <button class="btn btn-ghost" style="white-space:nowrap;flex-shrink:0" onclick="openLink()" title="Abrir no Outlook">↗ Abrir</button>
+      </div>
+    </div>
     <div class="modal-foot">
       <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
       <button class="btn btn-primary" onclick="saveTask()">Salvar</button>
@@ -576,6 +581,12 @@ function updateSidebar(){
 function updateCatNav(){
   document.getElementById('cat-nav').innerHTML=cats.map(c=>{const cnt=tasks.filter(t=>(t.cats||[]).includes(c.id)).length;return`<button class="cat-nav-item${catFilter===c.id?' active':''}" onclick="setCatFilter('${c.id}',this)" style="${catFilter===c.id?`border-left-color:${c.color}`:''}"><span class="cat-dot" style="background:${c.color}"></span><span style="${catFilter===c.id?`color:${c.color}`:''}">${c.name}</span><span class="cat-nav-count">${cnt}</span></button>`}).join('');
 }
+function openLink(){
+  const url = document.getElementById('f-link').value.trim();
+  if(url) window.open(url, '_blank');
+  else toast('⚠️ Nenhum link informado');
+}
+
 function renderCatFilterBar(){
   const chips = document.getElementById('cat-filter-chips');
   const clearBtn = document.getElementById('cat-clear-btn');
